@@ -29,7 +29,7 @@ def valid_board(bo, num, pos):
 
     # check column
     for i in range(9):
-        if bo[1][pos[1]] == num and pos[0] != i:
+        if bo[i][pos[1]] == num and pos[0] != i:
             return False
 
     # check box
