@@ -1,0 +1,199 @@
+[
+    {
+        "label": "Flask",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "render_template",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "url_for",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "request",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "flash",
+        "importPath": "flask",
+        "description": "flask",
+        "isExtraImport": true,
+        "detail": "flask",
+        "documentation": {}
+    },
+    {
+        "label": "print_board",
+        "importPath": "logic",
+        "description": "logic",
+        "isExtraImport": true,
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "solve",
+        "importPath": "logic",
+        "description": "logic",
+        "isExtraImport": true,
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "string_to_board",
+        "importPath": "logic",
+        "description": "logic",
+        "isExtraImport": true,
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "valid_board_full",
+        "importPath": "logic",
+        "description": "logic",
+        "isExtraImport": true,
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "index",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def index():\n    return render_template('index.html')\ndef data_to_string(d):\n    s = []\n    for i in d.listvalues():\n        s.append(i[0])\n    t = \"\"\n    ans = []\n    for i in s:\n        if i == \"\":",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "data_to_string",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def data_to_string(d):\n    s = []\n    for i in d.listvalues():\n        s.append(i[0])\n    t = \"\"\n    ans = []\n    for i in s:\n        if i == \"\":\n            t += '0'\n        else:",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "solution",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def solution():\n    data = request.form\n    s = data_to_string(data)\n    bo = string_to_board(s)\n    if not valid_board_full(bo):\n        flash('Invalid Sudoku')\n        return redirect(url_for('index'))\n    else:\n        solve(bo)\n        return render_template('solution.html', solved_puzzle=bo)",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "clean_puzzle",
+        "kind": 2,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "def clean_puzzle(puzzle):\n    \"\"\"\n    converts input from request.form to a string format readable by Sudoku\n    \"\"\"\n    output = ''\n    for val in puzzle.values():\n        if val == '':\n            output += '.'\n        elif int(val) in range(1, 10):\n            output += val",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app = Flask(__name__)\napp.config['SECRET_KEY'] = '12341234'\n@app.route('/')\n@app.route('/index')\ndef index():\n    return render_template('index.html')\ndef data_to_string(d):\n    s = []\n    for i in d.listvalues():\n        s.append(i[0])",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "app.config['SECRET_KEY']",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "app.config['SECRET_KEY'] = '12341234'\n@app.route('/')\n@app.route('/index')\ndef index():\n    return render_template('index.html')\ndef data_to_string(d):\n    s = []\n    for i in d.listvalues():\n        s.append(i[0])\n    t = \"\"",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "valid_board_full",
+        "kind": 2,
+        "importPath": "logic",
+        "description": "logic",
+        "peekOfCode": "def valid_board_full(bo):\n    for x in range(9):\n        for y in range(9):\n            if bo[x][y] == 0:\n                pass\n            else:\n                if not valid_board(bo, bo[x][y], (x, y)):\n                    return False\n    return True\ndef valid_board(bo, num, pos):",
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "valid_board",
+        "kind": 2,
+        "importPath": "logic",
+        "description": "logic",
+        "peekOfCode": "def valid_board(bo, num, pos):\n    # check row:\n    for i in range (9):\n        if bo[pos[0]][i] == num and pos[1] != i:\n            return False\n    # check column\n    for i in range(9):\n        if bo[i][pos[1]] == num and pos[0] != i:\n            return False\n    # check box",
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "print_board",
+        "kind": 2,
+        "importPath": "logic",
+        "description": "logic",
+        "peekOfCode": "def print_board(bo):\n    for i in range(len(bo)):\n        if i % 3 == 0 and i != 0:\n            print(\"- - - - - - - - - - - - \")\n        for j in range(len(bo[0])):\n            if j % 3 == 0 and j != 0:\n                print(\" | \", end=\"\")\n            if j == 8:\n                print(bo[i][j])\n            else:",
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "find_empty",
+        "kind": 2,
+        "importPath": "logic",
+        "description": "logic",
+        "peekOfCode": "def find_empty(bo):\n    for i in range(len(bo)):\n        for j in range(len(bo[0])):\n            if bo[i][j] == 0:\n                return (i, j)  # row, col\n    return None\ndef string_to_board(s):\n    ans = [\n    [7,8,0,4,0,0,1,2,0],\n    [6,0,0,0,7,5,0,0,9],",
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "string_to_board",
+        "kind": 2,
+        "importPath": "logic",
+        "description": "logic",
+        "peekOfCode": "def string_to_board(s):\n    ans = [\n    [7,8,0,4,0,0,1,2,0],\n    [6,0,0,0,7,5,0,0,9],\n    [0,0,0,6,0,1,0,7,8],\n    [0,0,7,0,4,0,2,6,0],\n    [0,0,1,0,5,0,9,3,0],\n    [9,0,4,0,6,0,0,0,5],\n    [0,7,0,3,0,0,0,1,2],\n    [1,2,0,0,0,7,4,0,0],",
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "solve",
+        "kind": 2,
+        "importPath": "logic",
+        "description": "logic",
+        "peekOfCode": "def solve(bo):\n    test = find_empty(bo)\n    if not test:\n        return True\n    else:\n        row, col = test\n    for i in range(1,10):\n        if valid_board(bo, i, (row,col)):\n            bo[row][col] = i\n            if solve(bo):",
+        "detail": "logic",
+        "documentation": {}
+    },
+    {
+        "label": "board",
+        "kind": 5,
+        "importPath": "logic",
+        "description": "logic",
+        "peekOfCode": "board = [\n    [7,8,0,4,0,0,1,2,0],\n    [6,0,0,0,7,5,0,0,9],\n    [0,0,0,6,0,1,0,7,8],\n    [0,0,7,0,4,0,2,6,0],\n    [0,0,1,0,5,0,9,3,0],\n    [9,0,4,0,6,0,0,0,5],\n    [0,7,0,3,0,0,0,1,2],\n    [1,2,0,0,0,7,4,0,0],\n    [0,4,9,2,0,6,0,0,7]",
+        "detail": "logic",
+        "documentation": {}
+    }
+]
